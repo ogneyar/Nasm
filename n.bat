@@ -1,0 +1,1 @@
+nasm -f bin hello.asm -o hello.exe
