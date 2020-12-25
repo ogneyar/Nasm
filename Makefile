@@ -16,12 +16,10 @@ hel:
 go:
     golink /entry:_start /console kernel32.dll user32.dll hello.obj
 
-h:
-    nasm -f elf h.asm
 
-he:
+h:
     nasm -f win32 h.asm -o h.obj
 
 gh:
-    golink /entry:_start /console kernel.dll user32.dll h.obj
+    golink /entry:_start /console kernel32.dll user32.dll h.obj
 
