@@ -1,6 +1,12 @@
 ; обычное присвоение NULL = 0
 NULL EQU 0
 
+; если нажата кнопка OK
+IDOK EQU 1
+; Если нажата кнопка CANCEL
+IDCANCEL EQU 2
+; Если нажата кнопка RETRY 
+IDRETRY EQU 4
 ; первый знак с права отвечает за количество и вид кнопок
 MB_OK EQU 0x00000000
 MB_OKCANCEL EQU 0x00000001
@@ -47,6 +53,9 @@ section .text
         push Text
         push NULL
         call _MessageBoxA@16    ; вызов функции
+
+        cmp EAX, IDRETRY
+        je Start
 
         push NULL
         call _ExitProcess@4     ; вызов функции
