@@ -1,0 +1,1 @@
+nasm -f bin helloDOS.asm -o helloDOS.com
