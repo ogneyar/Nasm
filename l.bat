@@ -1,0 +1,1 @@
+nasm -f bin les.asm -o les.exe
