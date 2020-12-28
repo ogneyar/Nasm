@@ -12,10 +12,9 @@ mov al, 43h     ; символ C (eng)
 int 0x10        ; вызов прерывания
 
 ; mov ax, 0x4c00
-; int 0x21        ; выход
 mov ah, 4ch     ; режим выхода
 mov al, 00h
-int 0x21
+int 0x21        ; выход
 
 
 
