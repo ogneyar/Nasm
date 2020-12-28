@@ -1,2 +1,2 @@
-nasm -f win32 les.asm
-golink /console les.obj
+nasm -f win32 les32.asm
+golink /console les32.obj
