@@ -1,19 +1,32 @@
+%include 'les32.inc'
 
 global Start
 
-section .text
-
+section general main
 Start:
-   
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg
-    mov edx, msglen
-    int 0x10
-    mov eax, 1
-    mov ebx, 0
-    int 0x21
+	
 
-section .data
-    msg: db "Linux rulez 4ever",0x0A,0
-    msglen equ $-msg
+	push MB_OK | MB_ICONQUESTION | MB_RETRYCANCEL | MB_DEFBUTTON2
+	push title
+	push banner
+	push NULL
+	call [MessageBoxA]
+
+	push IDRETRY
+	
+	pop ebx
+
+    ; cmp eax, IDRETRY
+	cmp eax, ebx
+    je Start
+
+    jmp Exit
+
+Exit:
+	push NULL
+	call [ExitProcess]
+
+section information data
+	banner db 'Hello world?',0xD,0xA,0
+	title db 'Hello',0
+

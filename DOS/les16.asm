@@ -1,11 +1,11 @@
 ; [BITS 16]
 ; [ORG 0]
 
-; SECTION .data
+SECTION .data
 	hello DB ".COM",0xd,0xa,'$'
 
-; SECTION .text
-org 0x100
+SECTION .text
+; org 0x100
 
 Start:
     mov ah, 0eh     ; режим вывода символа
@@ -33,14 +33,14 @@ Start:
     int 0x80        ; вызов прерывания
 
 
-Exit:    
+Exit:
     ; mov ax, 0x4c00    ; ah == 0x4c al == 0x00
     mov ah, 4ch     ; режим выхода
     mov al, 00h
     int 0x21        ; выход
 
 
-Mail:    
+Mail:
     mov al, 4dh     ; символ M (eng)
     int 0x10        ; вызов прерывания
     mov al, 41h     ; символ A (eng)
